@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+"""Example code to access the Manetu.io GraphQL interface."""
+
+__copyright__ = """
+Copyright (C) 2021 Manetu Inc.
+Author: Alex Tsariounov <alext@manetu.com>
+
+This is free software; please see the LICENSE file
+for details and any restrictions.
+"""
+
+from mql.main import main
+
+if __name__ == '__main__':
+    main()
