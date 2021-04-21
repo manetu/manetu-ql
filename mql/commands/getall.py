@@ -8,6 +8,6 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
-def doit(args):
+def dispatch(args):
     if args.verbose > 0:
         print(f'executing "getall" command, verbosity {args.verbose}')

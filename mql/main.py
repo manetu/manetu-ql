@@ -22,6 +22,8 @@ parser.add_argument('-v', '--verbose', action='count',
                     help='increase verbose output')
 parser.add_argument('-p', '--pat', action='store',
                     help='specify personal access token to use')
+parser.add_argument('-j', '--jwt', action='store',
+                    help='specify jwt to use')
 
 # cmdline entry point and dispatcher
 def main():
@@ -30,20 +32,18 @@ def main():
     if args.verbose > 0:
         print(f'dispatching command: "{args.command}", with verbosity of {args.verbose}')
 
-   
-
     try:
         # first import the command
         cmd = importlib.import_module(f'mql.commands.{args.command}')
 
         # check for the pat
-        if args.pat == None:
-            print('no personal access token specified, cannot login to manetu.io')
+        if args.pat == None and args.jwt == None:
+            print('no PAT or JWT specified, cannot login to manetu.io')
             # TODO: here is where we'll impl oauth logins
             sys.exit(1)
 
         # and now execute it
-        cmd.doit(args)
+        cmd.dispatch(args)
 
     except SystemExit:
         raise
