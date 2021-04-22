@@ -32,7 +32,7 @@ subparsers = parser.add_subparsers(help='commands', dest='command')
 
 #  ----- schema command ------
 schema_parser = subparsers.add_parser('schema', help='get schema from server')
-schema_parser.add_argument('which', action='store',
+schema_parser.add_argument('desired', action='store',
                             help='which schema to get (default "all")',
                             choices={'all', 'queries', 'mutations', 'subscriptions'},
                             default='all')
