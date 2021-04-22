@@ -33,8 +33,8 @@ def main():
 
         # check for the pat
         if args.pat == None and args.jwt == None:
-            print('no PAT or JWT specified, cannot login to manetu.io')
             # TODO: here is where we'll impl oauth logins
+            print('no PAT or JWT specified, cannot login to manetu.io')
             sys.exit(1)
 
         # and now execute it
