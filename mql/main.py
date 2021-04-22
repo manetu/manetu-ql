@@ -9,29 +9,9 @@ for details and any restrictions.
 """
 
 from mql.version import version
+from mql.args import parser
 import argparse, importlib, sys
 
-# parser declarations for common and all subcommands
-parser = argparse.ArgumentParser(description=f'Manetu.io GraphQL interface, version {version}')
-
-#  global options
-parser.add_argument('-v', '--verbose', action='count', default=0,
-                    help='increase verbose output')
-parser.add_argument('-p', '--pat', action='store',
-                    help='specify personal access token to use')
-parser.add_argument('-j', '--jwt', action='store',
-                    help='specify jwt to use')
-
-#  the commands
-subparsers = parser.add_subparsers(help='commands', dest='command')
-
-#  schema command
-schema_parser = subparsers.add_parser('schema', help='get schema from server')
-
-#  getall command which gets all fields in an object
-getall_parser = subparsers.add_parser('getall', help='get all fields for an object')
-getall_parser.add_argument('object', action='store',
-                           help='the object of interest')
 
 # cmdline entry point and dispatcher
 def main():
@@ -43,6 +23,11 @@ def main():
             print(f'dispatching command: "{args.command}", with verbosity of {args.verbose}')
 
     try:
+        if args.command == None:
+            print('Error: command not specified')
+            parser.print_usage()
+            sys.exit(1)
+
         # first import the command
         cmd = importlib.import_module(f'mql.commands.{args.command}')
 
