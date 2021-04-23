@@ -41,6 +41,8 @@ schema_parser.add_argument('desired', action='store',
                             help='which schema to get (default: "all")',
                             choices={'all', 'queries', 'mutations', 'subscriptions'},
                             nargs='?', default='all')
+schema_parser.add_argument('-f', '--full', action='store_true',
+                            help='output full schema (default: list of name/description)')
 
 
 #  ----- getall command which gets all fields in an object ------

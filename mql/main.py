@@ -41,7 +41,9 @@ def main():
             sys.exit(1)
 
         args.tokStr = tokStr
-
+        if args.verbose > 1:
+            print(f'using token string: "{args.tokStr}"')
+        
         # and now execute it
         cmd.dispatch(args)
 
@@ -49,6 +51,8 @@ def main():
         raise
 
     except:
+        if args.verbose > 0:
+            raise
         print(f'Unexpected error for command: {args.command}, error: {sys.exc_info()[1]}')
         sys.exit(2)
 
@@ -65,19 +69,19 @@ def resolveTok(args):
                 if tok == None or tok == '':
                     return None
                 else:
-                    return 'Bearer: ' + tok
+                    return 'Bearer ' + tok
             else:
-                return 'Basic: ' + tok
+                return 'Basic ' + tok
         else:
             # jwt env specified
             tok = os.environ.get(args.jwt)
             if tok == None or tok == '':
                 return None
             else:
-                return 'Bearer: ' + tok
+                return 'Bearer ' + tok
     else:
         # pat env specified
         tok = os.environ.get(args.pat)
         if tok == None or tok == '':
             return None
-        return 'Basic: ' + tok
+        return 'Basic ' + tok

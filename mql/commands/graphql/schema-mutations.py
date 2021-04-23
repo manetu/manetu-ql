@@ -10,11 +10,24 @@ for details and any restrictions.
 
 from mql.commands.graphql.fragments import FullType
 
-query = FullType + """
+queryFull = FullType + """
 query IntrospectionQuery {
   __schema {
     mutationType {
         ...FullType
+    }
+  }
+}
+"""
+
+queryShort = """
+{
+  __schema {
+    mutationType {
+      fields {
+        name
+        description
+      }
     }
   }
 }
