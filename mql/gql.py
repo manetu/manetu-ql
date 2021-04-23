@@ -14,10 +14,11 @@ from urllib.error import URLError
 class GQL(object):
     """GraphQL server encapsulating class"""
 
-    def __init__(self, headers, uri):
+    def __init__(self, headers, uri, verbosity):
         """constructor with a dict as headers and a uri pointing to the server"""
         self.headers = headers
         self.uri = uri
+        self.verbosity = verbosity
 
     def query(self, query, variables):
         """takes a json query and a variables dict (if any) as parameters, returns json_data, raises if status is bad, or other error"""
@@ -32,10 +33,11 @@ class GQL(object):
             with urllib.request.urlopen(request) as response:
                 page = response.read()
         except URLError as e:
-            if hasattr(e, 'reason'):
-                print(f"Can't reach server {self.uri} because: {e.reason}")
-            elif hasattr(e, 'code'):
-                print(f"Server error (code: {e.code}): {e.msg}")
+            if self.verbosity > 0:
+                if hasattr(e, 'reason'):
+                    print(f"Can't reach server {self.uri} because: {e.reason}")
+                elif hasattr(e, 'code'):
+                    print(f"Server error (code: {e.code}): {e.msg}")
             raise e
 
         return str(page)

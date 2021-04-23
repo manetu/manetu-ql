@@ -51,7 +51,7 @@ def main():
         raise
 
     except:
-        if args.verbose > 0:
+        if args.verbose > 1:
             raise
         print(f'Unexpected error for command: {args.command}, error: {sys.exc_info()[1]}')
         sys.exit(2)

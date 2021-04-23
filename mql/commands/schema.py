@@ -25,7 +25,7 @@ def dispatch(args):
     if args.verbose > 1:
         print(f'using query text: {query}')
 
-    gq = GQL({'Authorization': args.tokStr}, args.uri)
+    gq = GQL({'Authorization': args.tokStr}, args.uri, args.verbose)
 
     # let it raise on errors
     data = gq.query(query, None)
