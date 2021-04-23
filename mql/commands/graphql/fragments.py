@@ -12,8 +12,10 @@ FullType = """
 fragment FullType on __Type {
   kind
   name
+  description
   fields(includeDeprecated: true) {
     name
+    description
     args {
       ...InputValue
     }
@@ -31,6 +33,7 @@ fragment FullType on __Type {
   }
   enumValues(includeDeprecated: true) {
     name
+    description
     isDeprecated
     deprecationReason
   }
@@ -40,6 +43,7 @@ fragment FullType on __Type {
 }
 fragment InputValue on __InputValue {
   name
+  description
   type {
     ...TypeRef
   }

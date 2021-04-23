@@ -19,11 +19,15 @@ query IntrospectionQuery {
     mutationType {
       name
     }
+    subscriptionType {
+        name
+    }
     types {
       ...FullType
     }
     directives {
       name
+      description
       locations
       args {
         ...InputValue

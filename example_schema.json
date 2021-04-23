@@ -1,2806 +1,3091 @@
 {
-    "data": {
-      "__schema": {
-        "queryType": {
-          "name": "Query"
+  "data": {
+    "__schema": {
+      "queryType": {
+        "name": "Query"
+      },
+      "mutationType": {
+        "name": "Mutation"
+      },
+      "subscriptionType": {
+        "name": "Subscription"
+      },
+      "types": [
+        {
+          "kind": "SCALAR",
+          "name": "Boolean",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
         },
-        "mutationType": {
-          "name": "Mutation"
+        {
+          "kind": "SCALAR",
+          "name": "Float",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
         },
-        "types": [
-          {
-            "kind": "SCALAR",
-            "name": "Boolean",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "SCALAR",
-            "name": "Float",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "SCALAR",
-            "name": "ID",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "SCALAR",
-            "name": "Int",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "Mutation",
-            "fields": [
-              {
-                "name": "cancel_request",
-                "args": [
-                  {
-                    "name": "id",
-                    "type": {
+        {
+          "kind": "SCALAR",
+          "name": "ID",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "Int",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Mutation",
+          "description": null,
+          "fields": [
+            {
+              "name": "cancel_request",
+              "description": "Cancels an outstanding request.  Caller must own the request",
+              "args": [
+                {
+                  "name": "id",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "create_vault",
+              "description": "Creates a vault using given args",
+              "args": [
+                {
+                  "name": "label",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
                       "kind": "SCALAR",
                       "name": "ID",
                       "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
+                    }
+                  },
+                  "defaultValue": null
                 },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "create_vault",
-                "args": [
-                  {
-                    "name": "label",
-                    "type": {
-                      "kind": "NON_NULL",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "ID",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
+                {
+                  "name": "matchables",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "matchable",
+                      "ofType": null
+                    }
                   },
-                  {
-                    "name": "matchables",
-                    "type": {
-                      "kind": "LIST",
-                      "name": null,
-                      "ofType": {
-                        "kind": "INPUT_OBJECT",
-                        "name": "matchable",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  },
-                  {
+                  "defaultValue": null
+                },
+                {
+                  "name": "role",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
                     "name": "role",
-                    "type": {
-                      "kind": "ENUM",
-                      "name": "role",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "vault_info",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "vault_info",
+                "ofType": null
               },
-              {
-                "name": "delete_vault",
-                "args": [
-                  {
-                    "name": "label",
-                    "type": {
-                      "kind": "NON_NULL",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "ID",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "provider_claim_task",
-                "args": [
-                  {
-                    "name": "id",
-                    "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "delete_vault",
+              "description": "Deletes a vault using given args",
+              "args": [
+                {
+                  "name": "label",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
                       "kind": "SCALAR",
                       "name": "ID",
                       "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "provider_claim_task",
+              "description": "Claim a manual task",
+              "args": [
+                {
+                  "name": "id",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "task",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "provider_complete_task",
+              "description": "Complete a manual task",
+              "args": [
+                {
+                  "name": "id",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "provider_resolve_approval_task",
+              "description": "Resolve an approval task",
+              "args": [
+                {
+                  "name": "approved",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "id",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "reason",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "set_profile",
+              "description": "Updates the callers profile information in their user vault",
+              "args": [
+                {
+                  "name": "email",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "name",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Query",
+          "description": null,
+          "fields": [
+            {
+              "name": "get_password_reset_questions",
+              "description": "Returns all available password-reset questions",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "password_reset_questions",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "get_profile",
+              "description": "Returns the profile data of the current user",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "profile",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "get_provider",
+              "description": "Returns information about the logged in provider",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "provider",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "get_provider_policy",
+              "description": "Returns the policies created by the provider.",
+              "args": [
+                {
+                  "name": "labels",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "pupids",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "pup_context",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "get_provider_task_counts",
+              "description": "Returns count statistics for pending tasks",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "task_counts",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "get_provider_tasks",
+              "description": "Returns tasks belonging to the current provider",
+              "args": [
+                {
+                  "name": "pagination",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "pagination",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "spec",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "task_spec",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "OBJECT",
                   "name": "task",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "provider_complete_task",
-                "args": [
-                  {
-                    "name": "id",
-                    "type": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "provider_resolve_approval_task",
-                "args": [
-                  {
-                    "name": "approved",
-                    "type": {
-                      "kind": "SCALAR",
-                      "name": "Boolean",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "id",
-                    "type": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "reason",
-                    "type": {
-                      "kind": "SCALAR",
-                      "name": "String",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "set_profile",
-                "args": [
-                  {
-                    "name": "email",
-                    "type": {
-                      "kind": "SCALAR",
-                      "name": "String",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "name",
-                    "type": {
-                      "kind": "SCALAR",
-                      "name": "String",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "Query",
-            "fields": [
-              {
-                "name": "get_password_reset_questions",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "password_reset_questions",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "get_profile",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "profile",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "get_provider",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "provider",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "get_provider_policy",
-                "args": [
-                  {
-                    "name": "labels",
-                    "type": {
-                      "kind": "LIST",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "String",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "pupids",
-                    "type": {
-                      "kind": "LIST",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "String",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "pup_context",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "get_provider_task_counts",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "task_counts",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "get_provider_tasks",
-                "args": [
-                  {
-                    "name": "pagination",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "pagination",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "spec",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "task_spec",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "task",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "get_provider_vaults",
-                "args": [
-                  {
-                    "name": "labels",
-                    "type": {
-                      "kind": "LIST",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "String",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "pagination",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "pagination",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "scope",
-                    "type": {
-                      "kind": "ENUM",
-                      "name": "vault_scope_flags",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "vault",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "get_user_vaults",
-                "args": [
-                  {
-                    "name": "pagination",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "pagination",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "providers",
-                    "type": {
-                      "kind": "LIST",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "String",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "roles",
-                    "type": {
-                      "kind": "LIST",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "String",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "vault",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "query_provider_attributes",
-                "args": [
-                  {
-                    "name": "pagination",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "pagination",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "sparql_expr",
-                    "type": {
-                      "kind": "NON_NULL",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "String",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "get_provider_vaults",
+              "description": "Returns vaults belonging to the current provider",
+              "args": [
+                {
+                  "name": "labels",
+                  "description": "Optional: explicit vaults to return.  scope and pagination are ignored",
+                  "type": {
                     "kind": "LIST",
                     "name": null,
                     "ofType": {
-                      "kind": "OBJECT",
-                      "name": "attribute",
-                      "ofType": null
-                    }
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "search",
-                "args": [
-                  {
-                    "name": "pagination",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "pagination",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "term",
-                    "type": {
                       "kind": "SCALAR",
                       "name": "String",
                       "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "vault",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "SCALAR",
-            "name": "String",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "Subscription",
-            "fields": [
-              {
-                "name": "provider_dsars",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "vault",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "vault_updates",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "vault",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "activity",
-            "fields": [
-              {
-                "name": "counts",
-                "args": [
-                  {
-                    "name": "class",
-                    "type": {
-                      "kind": "ENUM",
-                      "name": "event_class",
-                      "ofType": null
-                    },
-                    "defaultValue": null
+                    }
                   },
-                  {
-                    "name": "grouping",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "duration",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
-                    "name": "range",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "range",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "sum",
-                    "ofType": null
-                  }
+                  "defaultValue": null
                 },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "events",
-                "args": [
-                  {
-                    "name": "class",
-                    "type": {
-                      "kind": "ENUM",
-                      "name": "event_class",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  },
-                  {
+                {
+                  "name": "pagination",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
                     "name": "pagination",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "pagination",
-                      "ofType": null
-                    },
-                    "defaultValue": null
+                    "ofType": null
                   },
-                  {
-                    "name": "range",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "range",
+                  "defaultValue": null
+                },
+                {
+                  "name": "scope",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "vault_scope_flags",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "vault",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "get_user_vaults",
+              "description": "Returns the details of vaults specific to the caller as the data-subject",
+              "args": [
+                {
+                  "name": "pagination",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "pagination",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "providers",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
                       "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "roles",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "vault",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "query_provider_attributes",
+              "description": "Returns a result set from a SPARQL query",
+              "args": [
+                {
+                  "name": "pagination",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "pagination",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "sparql_expr",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "LIST",
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "event",
+                    "name": "attribute",
                     "ofType": null
                   }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "last_ts",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "search",
+              "description": "Returns all vaults that match the search term",
+              "args": [
+                {
+                  "name": "pagination",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "pagination",
+                    "ofType": null
+                  },
+                  "defaultValue": null
                 },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "attribute",
-            "fields": [
-              {
-                "name": "name",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "value",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "SCALAR",
-            "name": "date",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "INPUT_OBJECT",
-            "name": "duration",
-            "fields": null,
-            "inputFields": [
-              {
-                "name": "units",
-                "type": {
-                  "kind": "ENUM",
-                  "name": "time_units",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "value",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "event",
-            "fields": [
-              {
-                "name": "class",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "event_class",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "description",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "fulltext",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "id",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
+                {
+                  "name": "term",
+                  "description": null,
+                  "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "notarization",
-                "args": [],
-                "type": {
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "OBJECT",
-                  "name": "event_notarization",
+                  "name": "vault",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "raw",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "String",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Subscription",
+          "description": null,
+          "fields": [
+            {
+              "name": "provider_dsars",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "vault",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "vault_updates",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "vault",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "activity",
+          "description": "A set of metrics/analytics related to activity",
+          "fields": [
+            {
+              "name": "counts",
+              "description": null,
+              "args": [
+                {
+                  "name": "class",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "event_class",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "grouping",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "duration",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "range",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "range",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "OBJECT",
-                  "name": "raw_event",
+                  "name": "sum",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "subject",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "events",
+              "description": null,
+              "args": [
+                {
+                  "name": "class",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "event_class",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "pagination",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "pagination",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "range",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "range",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "OBJECT",
-                  "name": "event_subject",
+                  "name": "event",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "summary",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "last_ts",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "attribute",
+          "description": "A name/value pair stored in a manetu vault",
+          "fields": [
+            {
+              "name": "name",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "value",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "date",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "duration",
+          "description": "A period of time",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "units",
+              "description": null,
+              "type": {
+                "kind": "ENUM",
+                "name": "time_units",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "value",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "event",
+          "description": "A record of past activity",
+          "fields": [
+            {
+              "name": "class",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "event_class",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "fulltext",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "notarization",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "event_notarization",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "raw",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "raw_event",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "subject",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "event_subject",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "summary",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ts",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "event_class",
+          "description": "The class of event",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "OTHER",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "DATA",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "DSAR",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "CONSENT",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ACCOUNT",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "SYSTEM",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "APPROVAL",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "event_notarization",
+          "description": "The notarization details of an event",
+          "fields": [
+            {
+              "name": "created",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "hash",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "hash_doc",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "link",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "status",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "notarization_status",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "txhash",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "event_subject",
+          "description": "The subject of an event",
+          "fields": [
+            {
+              "name": "bid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "email",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "label",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "provider",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "matchable",
+          "description": "Maps to Matchable protobuf message",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "element",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "type",
+              "description": null,
+              "type": {
+                "kind": "ENUM",
+                "name": "matchable_type",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "matchable_type",
+          "description": "The types of matchables associated with an identity",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "INVALID",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "EMAIL",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "PHONE",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ID",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "mfa_status",
+          "description": "User's MFA status",
+          "fields": [
+            {
+              "name": "enabled",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "type",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "mfa_type",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "mfa_type",
+          "description": "The types of supported multi-factor authentication methods",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "TOTP",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "notarization_status",
+          "description": "The status of a notarized event",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "UNKNOWN",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "PENDING",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "CONFIRMED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "pagination",
+          "description": "A descriptor to paginate a potentially long response",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "limit",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "offset",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "password_reset_questions",
+          "description": "Current password-reset questions",
+          "fields": [
+            {
+              "name": "created",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "last_updated",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "questions",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "ts",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "event_class",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "OTHER",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "DATA",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "DSAR",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "CONSENT",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "ACCOUNT",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "SYSTEM",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "APPROVAL",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "event_notarization",
-            "fields": [
-              {
-                "name": "created",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "hash",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "secrets",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "hash_doc",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "privacy_contact",
+          "description": "Privacy contact",
+          "fields": [
+            {
+              "name": "address",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
-                "name": "link",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "email",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
-                "name": "status",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "notarization_status",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "phone",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
-                "name": "txhash",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "event_subject",
-            "fields": [
-              {
-                "name": "bid",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "profile",
+          "description": "The profile info for the logged in user",
+          "fields": [
+            {
+              "name": "email",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
-                "name": "email",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "label",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "name",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "provider",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "INPUT_OBJECT",
-            "name": "matchable",
-            "fields": null,
-            "inputFields": [
-              {
-                "name": "element",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "type",
-                "type": {
-                  "kind": "ENUM",
-                  "name": "matchable_type",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "matchable_type",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "INVALID",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "EMAIL",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "PHONE",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "ID",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "mfa_status",
-            "fields": [
-              {
-                "name": "enabled",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "type",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "mfa_status",
+              "description": null,
+              "args": [
+                {
                   "name": "mfa_type",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "mfa_type",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "TOTP",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "notarization_status",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "UNKNOWN",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "PENDING",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "CONFIRMED",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "INPUT_OBJECT",
-            "name": "pagination",
-            "fields": null,
-            "inputFields": [
-              {
-                "name": "limit",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "offset",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "password_reset_questions",
-            "fields": [
-              {
-                "name": "created",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "last_updated",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "questions",
-                "args": [],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "secrets",
-                "args": [],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "privacy_contact",
-            "fields": [
-              {
-                "name": "address",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "email",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "phone",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "profile",
-            "fields": [
-              {
-                "name": "email",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "mfa_status",
-                "args": [
-                  {
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
                     "name": "mfa_type",
-                    "type": {
-                      "kind": "ENUM",
-                      "name": "mfa_type",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "mfa_status",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "mfa_status",
+                "ofType": null
               },
-              {
-                "name": "name",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "provider",
-            "fields": [
-              {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "provider",
+          "description": "Information about a Manetu provider",
+          "fields": [
+            {
+              "name": "activity",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
                 "name": "activity",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "activity",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                "ofType": null
               },
-              {
-                "name": "created",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "created",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
               },
-              {
-                "name": "domain",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "domain",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
-                "name": "last_updated",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "last_updated",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
               },
-              {
-                "name": "logo_uri",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "logo_uri",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
-                "name": "name",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "privacy_contact",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
                 "name": "privacy_contact",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "privacy_contact",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                "ofType": null
               },
-              {
-                "name": "privacy_uri",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "privacy_uri",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ID",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "sid",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tier",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "website_uri",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "pup",
+          "description": "A descriptor of a permitted use of data to be consented",
+          "fields": [
+            {
+              "name": "created",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "default_choice",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "from",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "last_updated",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "legalese",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pupid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "title",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "to",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "vaults",
+              "description": null,
+              "args": [
+                {
+                  "name": "choice",
+                  "description": null,
+                  "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "Int",
                     "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "tier",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "website_uri",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "pup",
-            "fields": [
-              {
-                "name": "created",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "default_choice",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "description",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "from",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "last_updated",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "legalese",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "pupid",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "title",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "to",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "vaults",
-                "args": [
-                  {
-                    "name": "choice",
-                    "type": {
-                      "kind": "SCALAR",
-                      "name": "Int",
-                      "ofType": null
-                    },
-                    "defaultValue": null
                   },
-                  {
+                  "defaultValue": null
+                },
+                {
+                  "name": "pagination",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
                     "name": "pagination",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "pagination",
-                      "ofType": null
-                    },
-                    "defaultValue": null
+                    "ofType": null
                   },
-                  {
-                    "name": "query_flag",
-                    "type": {
-                      "kind": "ENUM",
-                      "name": "vault_policy_query_type",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "vault",
+                  "defaultValue": null
+                },
+                {
+                  "name": "query_flag",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "vault_policy_query_type",
                     "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "pup_context",
-            "fields": [
-              {
-                "name": "affirmed",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "choice",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "policy",
-                "args": [],
-                "type": {
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "OBJECT",
-                  "name": "pup",
+                  "name": "vault",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "pupid",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "pup_context",
+          "description": "The context for a permitted use policy",
+          "fields": [
+            {
+              "name": "affirmed",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
               },
-              {
-                "name": "sid",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "choice",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "policy",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "pup",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pupid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ID",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "INPUT_OBJECT",
-            "name": "range",
-            "fields": null,
-            "inputFields": [
-              {
-                "name": "from",
-                "type": {
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "range",
+          "description": "A range of dates",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "from",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "to",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "raw_event",
+          "description": "Raw event data",
+          "fields": [
+            {
+              "name": "data",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "type",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "request",
+          "description": "An outstanding data-subject access request",
+          "fields": [
+            {
+              "name": "created",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
-                  "name": "date",
+                  "name": "ID",
                   "ofType": null
-                },
-                "defaultValue": null
+                }
               },
-              {
-                "name": "to",
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "status",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "request_status",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "summary",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "type",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "request_type",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "request_status",
+          "description": "The status of an outstanding request",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "PENDING_APPROVAL",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "IMPLEMENTATION",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "REJECTED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "request_type",
+          "description": "The type of outstanding request",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "CORRECTION",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "FORGET_ME",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "role",
+          "description": "The role of the identity",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "USER",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "DEVICE",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "SERVICE",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ADMIN",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "SUPERADMIN",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "sum",
+          "description": "An aggregate count of events at a specific timestamp",
+          "fields": [
+            {
+              "name": "ts",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "value",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "task",
+          "description": "A unit of manual work to be done by a human",
+          "fields": [
+            {
+              "name": "assignee",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "created",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "due_date",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
-                  "name": "date",
+                  "name": "ID",
                   "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "raw_event",
-            "fields": [
-              {
-                "name": "data",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "type",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "request",
-            "fields": [
-              {
-                "name": "created",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "priority",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
               },
-              {
-                "name": "description",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "subject",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "event_subject",
+                "ofType": null
               },
-              {
-                "name": "id",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "summary",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
-                "name": "status",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "request_status",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "type",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "task_type",
+                "ofType": null
               },
-              {
-                "name": "summary",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "task_assignment_scope",
+          "description": "Scope task queries by the state of assignment",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "ALL",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "UNASSIGNED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ASSIGNED_SELF",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "task_counts",
+          "description": "Statistics related to the type of tasks that are pending",
+          "fields": [
+            {
+              "name": "all",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
               },
-              {
-                "name": "type",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "request_type",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "request_status",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "PENDING_APPROVAL",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "assigned_self",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
               },
-              {
-                "name": "IMPLEMENTATION",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "unassigned",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
               },
-              {
-                "name": "REJECTED",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "request_type",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "CORRECTION",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "task_order_by",
+          "description": "Ordering criteria for task queries",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "DUE_DATE",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "CREATE_DATE",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "PRIORITY",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ASSIGNEE",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "task_ordering",
+          "description": "Ascending or Descending order for task queries",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "DESC",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ASC",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "task_spec",
+          "description": "A task specification, used for querying task lists",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "order_by",
+              "description": null,
+              "type": {
+                "kind": "ENUM",
+                "name": "task_order_by",
+                "ofType": null
               },
-              {
-                "name": "FORGET_ME",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "role",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "USER",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "defaultValue": null
+            },
+            {
+              "name": "ordering",
+              "description": null,
+              "type": {
+                "kind": "ENUM",
+                "name": "task_ordering",
+                "ofType": null
               },
-              {
-                "name": "DEVICE",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "defaultValue": null
+            },
+            {
+              "name": "scope",
+              "description": null,
+              "type": {
+                "kind": "ENUM",
+                "name": "task_assignment_scope",
+                "ofType": null
               },
-              {
-                "name": "SERVICE",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "defaultValue": null
+            },
+            {
+              "name": "type",
+              "description": null,
+              "type": {
+                "kind": "ENUM",
+                "name": "task_type",
+                "ofType": null
               },
-              {
-                "name": "ADMIN",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "SUPERADMIN",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "sum",
-            "fields": [
-              {
-                "name": "ts",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "value",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "task",
-            "fields": [
-              {
-                "name": "assignee",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "created",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "description",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "due_date",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "id",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "priority",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "subject",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "event_subject",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "summary",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "type",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "task_type",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "task_assignment_scope",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "ALL",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "UNASSIGNED",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "ASSIGNED_SELF",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "task_counts",
-            "fields": [
-              {
-                "name": "all",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "assigned_self",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "unassigned",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "task_order_by",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "DUE_DATE",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "CREATE_DATE",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "PRIORITY",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "ASSIGNEE",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "task_ordering",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "DESC",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "ASC",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "INPUT_OBJECT",
-            "name": "task_spec",
-            "fields": null,
-            "inputFields": [
-              {
-                "name": "order_by",
-                "type": {
-                  "kind": "ENUM",
-                  "name": "task_order_by",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "ordering",
-                "type": {
-                  "kind": "ENUM",
-                  "name": "task_ordering",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "scope",
-                "type": {
-                  "kind": "ENUM",
-                  "name": "task_assignment_scope",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "type",
-                "type": {
-                  "kind": "ENUM",
-                  "name": "task_type",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "interfaces": null,
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "task_type",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "UNSPECIFIED",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "CORRECTION_APPROVAL",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "time_units",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "NS",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "US",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "MS",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "S",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "M",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "H",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "D",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "W",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "vault",
-            "fields": [
-              {
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "task_type",
+          "description": "The type of task",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "UNSPECIFIED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "CORRECTION_APPROVAL",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "time_units",
+          "description": "A unit of time",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "NS",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "US",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "MS",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "S",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "M",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "H",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "D",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "W",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "vault",
+          "description": "A secure storage vessel for an identity",
+          "fields": [
+            {
+              "name": "activity",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
                 "name": "activity",
-                "args": [],
-                "type": {
-                  "kind": "OBJECT",
-                  "name": "activity",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                "ofType": null
               },
-              {
-                "name": "attributes",
-                "args": [
-                  {
-                    "name": "sparql_expr",
-                    "type": {
-                      "kind": "NON_NULL",
-                      "name": null,
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "String",
-                        "ofType": null
-                      }
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "LIST",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "attributes",
+              "description": null,
+              "args": [
+                {
+                  "name": "sparql_expr",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
                     "name": null,
                     "ofType": {
-                      "kind": "OBJECT",
-                      "name": "attribute",
+                      "kind": "SCALAR",
+                      "name": "String",
                       "ofType": null
                     }
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "bid",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "created",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "email",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "label",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
                   "name": null,
                   "ofType": {
-                    "kind": "SCALAR",
-                    "name": "ID",
+                    "kind": "OBJECT",
+                    "name": "attribute",
                     "ofType": null
                   }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "name",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "bid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "created",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "email",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "label",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ID",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "provider",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
                 "name": "provider",
-                "args": [],
-                "type": {
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pups",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "OBJECT",
-                  "name": "provider",
+                  "name": "pup_context",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "pups",
-                "args": [],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "pup_context",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "requests",
-                "args": [
-                  {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "requests",
+              "description": null,
+              "args": [
+                {
+                  "name": "pagination",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
                     "name": "pagination",
-                    "type": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "pagination",
-                      "ofType": null
-                    },
-                    "defaultValue": null
-                  }
-                ],
-                "type": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "request",
                     "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "role",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "role",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "sid",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "status",
-                "args": [],
-                "type": {
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
                   "kind": "OBJECT",
-                  "name": "vault_status",
+                  "name": "request",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "vault_info",
-            "fields": [
-              {
-                "name": "bid",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "created",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "label",
-                "args": [],
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "last_updated",
-                "args": [],
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "date",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "role",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
                 "name": "role",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "role",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                "ofType": null
               },
-              {
-                "name": "sid",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "status",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "vault_status",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "vault_info",
+          "description": "Maps to VaultInfo protobuf message",
+          "fields": [
+            {
+              "name": "bid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "created",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "label",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ID",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "state",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "vault_state",
-                  "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "vault_policy_query_type",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "match_choice",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "last_updated",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
               },
-              {
-                "name": "unresponsive",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "vault_scope_flags",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "ALL",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "role",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "role",
+                "ofType": null
               },
-              {
-                "name": "CLAIMED",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sid",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
-              {
-                "name": "UNCLAIMED",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "state",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "vault_state",
+                "ofType": null
               },
-              {
-                "name": "REJECTED",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "ENUM",
-            "name": "vault_state",
-            "fields": null,
-            "inputFields": null,
-            "interfaces": null,
-            "enumValues": [
-              {
-                "name": "UNCLAIMED",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "vault_policy_query_type",
+          "description": "This specifies the criteria for the match",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "match_choice",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "unresponsive",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "vault_scope_flags",
+          "description": "The types of vaults being requested",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "ALL",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "CLAIMED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "UNCLAIMED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "REJECTED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "vault_state",
+          "description": "The state of a vault",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "UNCLAIMED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "CLAIMED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "REJECTED",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "vault_status",
+          "description": "The status of an identity (CLAIMED, REJECTED, etc)",
+          "fields": [
+            {
+              "name": "last_updated",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "date",
+                "ofType": null
               },
-              {
-                "name": "CLAIMED",
-                "isDeprecated": false,
-                "deprecationReason": null
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "state",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "vault_state",
+                "ofType": null
               },
-              {
-                "name": "REJECTED",
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "possibleTypes": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "vault_status",
-            "fields": [
-              {
-                "name": "last_updated",
-                "args": [],
-                "type": {
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        }
+      ],
+      "directives": [
+        {
+          "name": "skip",
+          "description": "Skip the selection only when the `if` argument is true.",
+          "locations": [
+            "INLINE_FRAGMENT",
+            "FIELD",
+            "FRAGMENT_SPREAD"
+          ],
+          "args": [
+            {
+              "name": "if",
+              "description": "Triggering argument for skip directive.",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
                   "kind": "SCALAR",
-                  "name": "date",
+                  "name": "Boolean",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
+                }
               },
-              {
-                "name": "state",
-                "args": [],
-                "type": {
-                  "kind": "ENUM",
-                  "name": "vault_state",
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "include",
+          "description": "Include the selection only when the `if` argument is true.",
+          "locations": [
+            "INLINE_FRAGMENT",
+            "FIELD",
+            "FRAGMENT_SPREAD"
+          ],
+          "args": [
+            {
+              "name": "if",
+              "description": "Triggering argument for include directive.",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
                   "ofType": null
-                },
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "inputFields": null,
-            "interfaces": [],
-            "enumValues": null,
-            "possibleTypes": null
-          }
-        ],
-        "directives": [
-          {
-            "name": "skip",
-            "locations": [
-              "INLINE_FRAGMENT",
-              "FIELD",
-              "FRAGMENT_SPREAD"
-            ],
-            "args": [
-              {
-                "name": "if",
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ]
-          },
-          {
-            "name": "include",
-            "locations": [
-              "INLINE_FRAGMENT",
-              "FIELD",
-              "FRAGMENT_SPREAD"
-            ],
-            "args": [
-              {
-                "name": "if",
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ]
-          }
-        ]
-      }
+                }
+              },
+              "defaultValue": null
+            }
+          ]
+        }
+      ]
     }
   }
+}
