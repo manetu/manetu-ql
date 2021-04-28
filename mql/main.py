@@ -10,7 +10,7 @@ for details and any restrictions.
 
 from mql.version import version
 import mql.args
-import argparse, importlib, os, sys
+import argparse, base64, importlib, os, sys
 
 
 # cmdline entry point and dispatcher
@@ -71,7 +71,7 @@ def resolveTok(args):
                 else:
                     return 'Bearer ' + tok
             else:
-                return 'Basic ' + tok
+                return 'Basic ' + base64.b64encode(f':{tok}'.encode('utf-8'))
         else:
             # jwt env specified
             tok = os.environ.get(args.jwt)
