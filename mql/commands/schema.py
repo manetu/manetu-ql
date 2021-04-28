@@ -32,6 +32,6 @@ def dispatch(args):
 
     # output pretified json
     if args.verbose > 0:
-        print('Server returns: \n')
+        print('Server returns:')
     
-    print(json.dumps(json.loads(data), indent=2))
+    print(data)
