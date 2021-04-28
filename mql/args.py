@@ -30,7 +30,7 @@ parser.add_argument('-p', '--pat', action='store',
 parser.add_argument('-j', '--jwt', action='store',
                     help='specify env var that holds the jwt (default: "MANETUQL_JWT")')
 parser.add_argument('--pretty', action='store_true',
-                    help="pretty-print json output, or just use 'jq'")
+                    help="pretty-print json output, or pipe to 'jq' (default: compact output)")
 
 
 #  the commands container
