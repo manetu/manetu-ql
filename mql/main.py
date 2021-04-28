@@ -84,4 +84,4 @@ def resolveTok(args):
         tok = os.environ.get(args.pat)
         if tok == None or tok == '':
             return None
-        return 'Basic ' + tok
+        return 'Basic ' + base64.b64encode(f':{tok}'.encode('utf-8'))
