@@ -29,6 +29,8 @@ parser.add_argument('-p', '--pat', action='store',
                     help='specify env var that holds the personal access token (default: "MANETUQL_PAT")')
 parser.add_argument('-j', '--jwt', action='store',
                     help='specify env var that holds the jwt (default: "MANETUQL_JWT")')
+parser.add_argument('--pretty', action='store_true',
+                    help="pretty-print json output, or just use 'jq'")
 
 
 #  the commands container

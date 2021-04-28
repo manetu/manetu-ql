@@ -34,4 +34,8 @@ def dispatch(args):
     if args.verbose > 0:
         print('Server returns:')
     
-    print(data)
+    #print(data)
+    if args.pretty:
+        print(json.dumps(json.loads(data), indent=2))
+    else:
+        print(data)
