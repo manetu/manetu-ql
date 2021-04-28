@@ -71,7 +71,7 @@ def resolveTok(args):
                 else:
                     return 'Bearer ' + tok
             else:
-                return 'Basic ' + base64.b64encode(f':{tok}'.encode('utf-8'))
+                return 'Basic ' + base64.b64encode(f':{tok}'.encode('utf-8')).decode('utf-8')
         else:
             # jwt env specified
             tok = os.environ.get(args.jwt)
@@ -84,4 +84,4 @@ def resolveTok(args):
         tok = os.environ.get(args.pat)
         if tok == None or tok == '':
             return None
-        return 'Basic ' + base64.b64encode(f':{tok}'.encode('utf-8'))
+        return 'Basic ' + base64.b64encode(f':{tok}'.encode('utf-8')).decode('utf-8')

@@ -11,3 +11,5 @@ for details and any restrictions.
 def dispatch(args):
     if args.verbose > 1:
         print(f'executing "getall" command, verbosity {args.verbose}')
+
+    return "Currently not implemented"
