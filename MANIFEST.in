@@ -1,0 +1,5 @@
+include Makefile
+include setup.py
+include README.md
+include LICENSE
+include manetu-ql
