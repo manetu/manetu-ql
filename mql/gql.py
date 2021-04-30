@@ -23,7 +23,10 @@ class GQL(object):
     def query(self, query, variables):
         """takes a json query and a variables dict (if any) as parameters, returns json_data, raises if status is bad, or other error"""
 
-        data = json.dumps({'query': query}).encode('utf-8') # encode to bytes
+        if variables == None:
+            data = json.dumps({'query': query}).encode('utf-8') # encode to bytes
+        else:
+            data = json.dumps({'query': query, 'variables': variables})
 
         if self.verbosity > 2:
             print(f'using query: {data}')
