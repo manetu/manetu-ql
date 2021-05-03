@@ -38,10 +38,10 @@ subparsers = parser.add_subparsers(help='commands', dest='command')
 
 
 #  ----- schema command ------
+schema_cmds = ['all', 'queries', 'mutations', 'subscriptions']
 schema_parser = subparsers.add_parser('schema', help='get schema from server')
 schema_parser.add_argument('desired', action='store',
-                            help='which schema to get (default: "all")',
-                            choices={'all', 'queries', 'mutations', 'subscriptions'},
+                            help=f"which schema to get (default: 'all', choices: {schema_cmds})",
                             nargs='?', default='all')
 schema_parser.add_argument('-f', '--full', action='store_true',
                             help='output full schema (default: list of name/description)')

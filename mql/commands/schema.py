@@ -9,13 +9,17 @@ for details and any restrictions.
 """
 
 from mql.gql import GQL
+from mql.resolver import cmd_resolve
+from mql.args import schema_cmds
 import importlib, json
+
+
 
 def dispatch(args):
     if args.verbose > 1:
         print(f'executing "schema" command, verbosity {args.verbose}')
 
-    mod = importlib.import_module(f'mql.commands.graphql.schema-{args.desired}')
+    mod = importlib.import_module(f'mql.commands.graphql.schema-{cmd_resolve(args.desired, schema_cmds)}')
 
     if args.full:
         query = mod.queryFull
