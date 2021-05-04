@@ -51,3 +51,12 @@ schema_parser.add_argument('-f', '--full', action='store_true',
 getall_parser = subparsers.add_parser('getall', help='get all fields for an object')
 getall_parser.add_argument('object', action='store',
                            help='the object of interest')
+
+#  ----- describe command which descirbes objects so you can call/specify them -----
+describe_cmds = ['all', 'returns', 'parameters', 'fields']
+describe_parser = subparsers.add_parser('describe', help='describe an object so you can call/use it')
+describe_parser.add_argument('object', action='store',
+                             help='which object to describe')
+describe_parser.add_argument('type', action='store',
+                             help=f"how to describe (default: 'all', choices: {describe_cmds}",
+                             nargs='?', default='all')

@@ -32,8 +32,8 @@ def dispatch(gql, args):
         print(data)
 
 
-def get_schema(gql, desired, full):
-    """gql: an initialized GQL object, desired: all/queries/mutations/subscriptions, full: bool of all or terse"""
+def get_schema(gql, desired, full=False):
+    """gql: an initialized GQL object, desired: all/queries/mutations/subscriptions, full: all or terse"""
     mod = importlib.import_module(f'mql.commands.graphql.schema-{desired}')
 
     if full:
