@@ -8,6 +8,7 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
+from mql.gql import GQL
 from mql.version import version
 import mql.args
 import argparse, base64, importlib, os, sys
@@ -40,12 +41,13 @@ def main():
             mql.args.parser.print_usage()
             sys.exit(1)
 
-        args.tokStr = tokStr
         if args.verbose > 1:
-            print(f'using token string: "{args.tokStr}"')
+            print(f'using token string: "{tokStr}"')
+
+        gql = GQL({'Authorization': tokStr}, args.uri, args.verbose)
         
         # and now execute it
-        cmd.dispatch(args)
+        cmd.dispatch(gql, args)
 
     except SystemExit:
         raise

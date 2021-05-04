@@ -8,38 +8,47 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
-from mql.gql import GQL
 from mql.resolver import cmd_resolve
 from mql.args import schema_cmds
 import importlib, json
 
+verbosity = 0
 
 
-def dispatch(args):
-    if args.verbose > 1:
-        print(f'executing "schema" command, verbosity {args.verbose}')
+def dispatch(gql, args):
+    """gql: an intialized GQL objecct, args: the parsed arguments"""
+    verbosity = args.verbose
 
-    mod = importlib.import_module(f'mql.commands.graphql.schema-{cmd_resolve(args.desired, schema_cmds)}')
+    if verbosity > 1:
+        print(f'executing "schema" command, verbosity {verbosity}')
 
-    if args.full:
-        query = mod.queryFull
-    else:
-        query = mod.queryShort
+    desired = cmd_resolve(args.desired, schema_cmds)
 
-    if args.verbose > 1:
-        print(f'using query text: {query}')
+    data = get_schema(gql, desired, args.full)
 
-    gq = GQL({'Authorization': args.tokStr}, args.uri, args.verbose)
-
-    # let it raise on errors
-    data = gq.query(query, None)
-
-    # output pretified json
-    if args.verbose > 0:
-        print('Server returns:')
-    
-    #print(data)
     if args.pretty:
         print(json.dumps(json.loads(data), indent=2))
     else:
         print(data)
+
+
+def get_schema(gql, desired, full):
+    """gql: an initialized GQL object, desired: all/queries/mutations/subscriptions, full: bool of all or terse"""
+    mod = importlib.import_module(f'mql.commands.graphql.schema-{desired}')
+
+    if full:
+        query = mod.queryFull
+    else:
+        query = mod.queryShort
+
+    if verbosity > 1:
+        print(f'using query text: {query}')
+
+    # let it raise on errors
+    data = gql.query(query, None)
+
+    # output pretified json
+    if verbosity > 0:
+        print('Server returns:')
+
+    return data
