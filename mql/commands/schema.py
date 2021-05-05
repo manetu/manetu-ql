@@ -16,7 +16,7 @@ verbosity = 0
 
 
 def dispatch(gql, args):
-    """gql: an intialized GQL objecct, args: the parsed arguments"""
+    """gql: an intialized GQL object, args: the parsed arguments"""
     verbosity = args.verbose
 
     if verbosity > 1:
