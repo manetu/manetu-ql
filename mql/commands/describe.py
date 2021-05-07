@@ -74,22 +74,39 @@ def extract_fields(obj, section):
         r = {}
         r['name'] = v['name']
         r['kind'] = v['type']['kind']
-        if v['type']['name'] != None:
+
+        if v['type']['ofType'] == None:
             r['type'] = v['type']['name']
         else:
-            r['ofType'] = v['type']['ofType']['kind']
-            r['type'] = v['type']['ofType']['name']
+            r['type'], r['ofType'] = extract_ofType(v)
+
         if v['description'] != None:
             r['description'] = v['description']
         if 'defaultValue' in v and v['defaultValue'] != None:
             r['defaultValue'] = v['defaultValue']
+
         if 'args' in v and v['args'] != None and len(v['args']) > 0:
             args = extract_fields(v, 'args')
             if args != None:
                 r['args'] = args
+
         fields.append(r)
 
     if len(fields) > 0:
         return fields
 
     return None
+
+def extract_ofType(obj):
+    """extract string of ofType's"""
+    name = obj['type']['name']
+    kind = obj['type']['kind']
+    obj_dive = obj['type']['ofType']
+
+    while obj_dive != None:
+        kind += f"|{obj_dive['kind']}"
+        if obj_dive['ofType'] == None:
+            name = obj_dive['name']
+        obj_dive = obj_dive['ofType']
+
+    return name, kind
