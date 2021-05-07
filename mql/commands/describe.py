@@ -13,20 +13,19 @@ from mql.commands.schema import get_schema
 import importlib, json
 
 verbosity = 0
+schema = {}
+mygql = None
 
 def dispatch(gql, args):
     """gql: an intialized GQL object, args: the parsed arguments"""
+    global mygql
+    mygql = gql
     verbosity = args.verbose
 
     if verbosity > 1:
         print(f'executing "schema" command, verbosity {verbosity}')
 
-    schema = json.loads(get_schema(gql, 'all', True))['data']['__schema']
-
-    obj = None
-    for v in schema['types']:
-        if v['name'] == args.object:
-            obj = v
+    obj = lookup_object(args.object)
 
     if obj is None:
         raise ValueError(f'unknown object requested: "{args.object}"')
@@ -40,11 +39,7 @@ def dispatch(gql, args):
         result['description'] = obj['description']
 
     if obj['kind'] == 'ENUM':
-        vals = []
-        for ev in obj['enumValues']:
-            vals.append(ev['name'])
-        if len(vals) > 0:
-            result['enumValues'] = vals
+        result['enumValues'] = extract_enumValues(obj)
 
     if 'type' in obj:
         # this is a return object
@@ -74,11 +69,17 @@ def extract_fields(obj, section):
         r = {}
         r['name'] = v['name']
         r['kind'] = v['type']['kind']
-
+        if r['kind'] == 'ENUM':
+            enum = lookup_object(r['name'])
+            r['enumValues'] = extract_enumValues(enum)
+            
         if v['type']['ofType'] == None:
             r['type'] = v['type']['name']
         else:
             r['type'], r['ofType'] = extract_ofType(v)
+            if r['ofType'].endswith("ENUM"):
+                enum = lookup_object(r['type'])
+                r['enumValues'] = extract_enumValues(enum)
 
         if v['description'] != None:
             r['description'] = v['description']
@@ -110,3 +111,20 @@ def extract_ofType(obj):
         obj_dive = obj_dive['ofType']
 
     return name, kind
+
+def extract_enumValues(obj):
+    vals = []
+    for ev in obj['enumValues']:
+        vals.append(ev['name'])
+    return vals
+
+def lookup_object(name):
+    global schema
+    if schema == {}:
+        schema = json.loads(get_schema(mygql, 'all', True))['data']['__schema']
+    obj = None
+    for v in schema['types']:
+        if v['name'] == name:
+            obj = v
+            break
+    return obj
