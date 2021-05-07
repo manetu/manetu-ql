@@ -53,10 +53,6 @@ getall_parser.add_argument('object', action='store',
                            help='the object of interest')
 
 #  ----- describe command which descirbes objects so you can call/specify them -----
-describe_cmds = ['short', 'all', 'returns', 'args', 'fields']
 describe_parser = subparsers.add_parser('describe', help='describe an object so you can call/use it')
 describe_parser.add_argument('object', action='store',
                              help='which object to describe')
-describe_parser.add_argument('how', action='store',
-                             help=f"how to describe (default: 'fields', choices: {describe_cmds}",
-                             nargs='?', default='fields')
