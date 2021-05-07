@@ -70,7 +70,7 @@ def extract_fields(obj, section):
         r['name'] = v['name']
         r['kind'] = v['type']['kind']
         if r['kind'] == 'ENUM':
-            enum = lookup_object(r['name'])
+            enum = lookup_object(v['type']['name'])
             r['enumValues'] = extract_enumValues(enum)
             
         if v['type']['ofType'] == None:
