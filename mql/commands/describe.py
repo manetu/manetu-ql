@@ -23,7 +23,7 @@ def dispatch(gql, args):
     verbosity = args.verbose
 
     if verbosity > 1:
-        print(f'executing "schema" command, verbosity {verbosity}')
+        print(f'executing "describe" command, verbosity {verbosity}')
 
     obj = lookup_object(args.object)
 
@@ -41,12 +41,8 @@ def dispatch(gql, args):
     if obj['kind'] == 'ENUM':
         result['enumValues'] = extract_enumValues(obj)
 
-    if 'type' in obj:
-        # this is a return object
-        pass
-
     if 'inputFields' in obj and obj['inputFields'] != None and len(obj['inputFields']) > 0:
-        fields = extract_fields(obj, 'inputFields')
+        fields = extract_fields(obj, 'inputFields', input=True)
         if fields != None:
             result['inputFields'] = fields
 
@@ -61,24 +57,33 @@ def dispatch(gql, args):
         print(json.dumps(result))
 
 
-def extract_fields(obj, section):
+def extract_fields(obj, section, input=False):
     """extract and create dict of fields from specified json object in specified section (fields, inputFields, args)"""
     fields = []
+
+    if input:
+        f_type = 'type'
+        f_kind = 'kind'
+    else:
+        f_type = 'returns_type'
+        f_kind = 'returns_kind'
 
     for v in obj[section]:
         r = {}
         r['name'] = v['name']
-        r['kind'] = v['type']['kind']
-        if r['kind'] == 'ENUM':
+        if 'type' in v:
+            r[f_kind] = v['type']['kind']
+
+        if f_kind in r and r[f_kind] == 'ENUM':
             enum = lookup_object(v['type']['name'])
             r['enumValues'] = extract_enumValues(enum)
             
         if v['type']['ofType'] == None:
-            r['type'] = v['type']['name']
+            r[f_type] = v['type']['name']
         else:
-            r['type'], r['ofType'] = extract_ofType(v)
+            r[f_type], r['ofType'] = extract_ofType(v)
             if r['ofType'].endswith("ENUM"):
-                enum = lookup_object(r['type'])
+                enum = lookup_object(r[f_type])
                 r['enumValues'] = extract_enumValues(enum)
 
         if v['description'] != None:
@@ -87,7 +92,7 @@ def extract_fields(obj, section):
             r['defaultValue'] = v['defaultValue']
 
         if 'args' in v and v['args'] != None and len(v['args']) > 0:
-            args = extract_fields(v, 'args')
+            args = extract_fields(v, 'args', input=True)
             if args != None:
                 r['args'] = args
 
