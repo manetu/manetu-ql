@@ -46,6 +46,8 @@ schema_parser.add_argument('desired', action='store',
 schema_parser.add_argument('-f', '--full', action='store_true',
                             help='output full schema (default: list of name/description)')
 
+#  ----- list command which lists all objects so you can describe/user them -----
+list_parser = subparsers.add_parser('list', help='list all objects so you can describe/use them')
 
 #  ----- getall command which gets all fields in an object ------
 getall_parser = subparsers.add_parser('getall', help='get all fields for an object')
