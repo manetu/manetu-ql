@@ -8,15 +8,13 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
-from mql.resolver import cmd_resolve
 from mql.commands.schema import get_schema
-import importlib, json
 
 verbosity = 0
 schema = {}
 mygql = None
 
-def dispatch(gql, args):
+def dispatch(gql, args, remainder):
     """gql: an intialized GQL object, args: the parsed arguments"""
     global mygql
     mygql = gql
@@ -24,5 +22,7 @@ def dispatch(gql, args):
 
     if verbosity > 1:
         print(f'executing "list" command, verbosity {verbosity}')
+
+    args.terms.extend(remainder)  # add potentially negated terms
 
     print(f"Args: {args}")

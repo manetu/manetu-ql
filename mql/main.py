@@ -16,46 +16,46 @@ import argparse, base64, importlib, os, sys
 
 # cmdline entry point and dispatcher
 def main():
-    args = mql.args.parser.parse_args()
+    args = mql.args.parser.parse_known_args()
 
-    if args.verbose:
+    if args[0].verbose:
         print(f'Manetu.io GraphQL interface, version {version}')
-        if args.verbose > 1:
-            print(f'dispatching command: "{args.command}", with verbosity of {args.verbose}')
+        if args[0].verbose > 1:
+            print(f'dispatching command: "{args[0].command}", with verbosity of {args[0].verbose}')
 
     try:
-        if args.command == None:
+        if args[0].command == None:
             print('Error: command not specified')
             mql.args.parser.print_usage()
             sys.exit(1)
 
         # first import the command
-        cmd = importlib.import_module(f'mql.commands.{args.command}')
+        cmd = importlib.import_module(f'mql.commands.{args[0].command}')
 
-        if args.verbose > 1:
+        if args[0].verbose > 1:
             print(f'arguments: {args}')
 
-        tokStr = resolveTok(args)
+        tokStr = resolveTok(args[0])
         if tokStr == None:
             print('no PAT or JWT specified, cannot login to manetu.io')
             mql.args.parser.print_usage()
             sys.exit(1)
 
-        if args.verbose > 1:
+        if args[0].verbose > 1:
             print(f'using token string: "{tokStr}"')
 
-        gql = GQL({'Authorization': tokStr}, args.uri, args.verbose)
+        gql = GQL({'Authorization': tokStr}, args[0].uri, args[0].verbose)
         
         # and now execute it
-        cmd.dispatch(gql, args)
+        cmd.dispatch(gql, args[0], args[1])
 
     except SystemExit:
         raise
 
     except:
-        if args.verbose > 1:
+        if args[0].verbose > 1:
             raise
-        print(f'Unexpected error for command: {args.command}, error: {sys.exc_info()[1]}')
+        print(f'Unexpected error for command: {args[0].command}, error: {sys.exc_info()[1]}')
         sys.exit(2)
 
 

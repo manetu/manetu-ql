@@ -9,13 +9,13 @@ for details and any restrictions.
 """
 
 from mql.resolver import cmd_resolve
-from mql.args import schema_cmds
-import importlib, json
+from mql.args import schema_cmds, schema_parser
+import importlib, json, sys
 
 verbosity = 0
 
 
-def dispatch(gql, args):
+def dispatch(gql, args, remainder):
     """gql: an intialized GQL object, args: the parsed arguments"""
     verbosity = args.verbose
 
@@ -23,7 +23,12 @@ def dispatch(gql, args):
         print(f'executing "schema" command, verbosity {verbosity}')
 
     desired = cmd_resolve(args.desired, schema_cmds)
-
+    
+    if len(remainder) > 0:
+        print(f'unknown extra arguments passed: {remainder}')
+        schema_parser.print_usage()
+        sys.exit(1)
+    
     data = get_schema(gql, desired, args.full)
 
     if args.pretty:

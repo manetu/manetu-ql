@@ -8,15 +8,16 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
+from mql.args import describe_parser
 from mql.resolver import cmd_resolve
 from mql.commands.schema import get_schema
-import importlib, json
+import importlib, json, sys
 
 verbosity = 0
 schema = {}
 mygql = None
 
-def dispatch(gql, args):
+def dispatch(gql, args, remainder):
     """gql: an intialized GQL object, args: the parsed arguments"""
     global mygql
     mygql = gql
@@ -29,6 +30,11 @@ def dispatch(gql, args):
 
     if obj is None:
         raise ValueError(f'unknown object requested: "{args.object}"')
+
+    if len(remainder) > 0:
+        print(f'unknown extra arguments passed: {remainder}')
+        describe_parser.print_usage()
+        sys.exit(1)
 
     result = {
         'kind': obj['kind'],

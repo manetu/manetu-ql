@@ -8,15 +8,16 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
+from mql.args import list_parser
 from mql.resolver import cmd_resolve
 from mql.commands.schema import get_schema
-import importlib, json
+import importlib, json, sys
 
 verbosity = 0
 schema = {}
 mygql = None
 
-def dispatch(gql, args):
+def dispatch(gql, args, remainder):
     """gql: an intialized GQL object, args: the parsed arguments"""
     global mygql, schema
     mygql = gql
@@ -24,6 +25,11 @@ def dispatch(gql, args):
 
     if verbosity > 1:
         print(f'executing "list" command, verbosity {verbosity}')
+
+    if len(remainder) > 0:
+        print(f'unknown extra arguments passed: {remainder}')
+        list_parser.print_usage()
+        sys.exit(1)
 
     schema = json.loads(get_schema(mygql, 'all', True))['data']['__schema']
    

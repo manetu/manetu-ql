@@ -8,7 +8,7 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
-def dispatch(gql, args):
+def dispatch(gql, args, remainder):
     if args.verbose > 1:
         print(f'executing "getall" command, verbosity {args.verbose}')
 
