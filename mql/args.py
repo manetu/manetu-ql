@@ -62,11 +62,15 @@ describe_parser.add_argument('object', action='store',
 #  ----- vault command which is used to create/destory/update vaults and list them -----
 vault_parser = subparsers.add_parser('vault', help='manage vaults in system')
 
+vault_parser.add_argument('-f', '--full', action='store_true',
+                            help='output all vault fields (default: minimal)')
+
 vsubparsers = vault_parser.add_subparsers(help='subcommands', dest='subcmd')
+
 vlist_parser = vsubparsers.add_parser('list', help='list vaults in system')
-vlist_parser.add_argument('label', action='store',
+vlist_parser.add_argument('terms', action='store',
                           help='which vault(s) to list (a list of vault labels), or which scopes (ALL, CLAIMED, UNCLAIMED, REJECTED), blank lists ALL',
-                          nargs='*', default='ALL')
+                          nargs='*', default=['ALL'])
 
 vsearch_parser = vsubparsers.add_parser('search', help='search for vaults matching term(s)')
 vsearch_parser.add_argument('terms', action='store',
@@ -74,11 +78,11 @@ vsearch_parser.add_argument('terms', action='store',
                             nargs='+')
 
 vcreate_parser = vsubparsers.add_parser('create', help='create vault(s)')
-vcreate_parser.add_argument('label', action='store',
+vcreate_parser.add_argument('terms', action='store',
                             help='create a vault with given label, multiple labels will create multiple vaults',
                             nargs='+')
 
 vdelete_parser = vsubparsers.add_parser('delete', help='delete vault(s)')
-vdelete_parser.add_argument('label', action='store',
+vdelete_parser.add_argument('terms', action='store',
                             help='delete a vault with given label, multiple labels will delete multiple vaults',
                             nargs='+')
