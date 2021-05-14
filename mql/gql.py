@@ -20,16 +20,8 @@ class GQL(object):
         self.uri = uri
         self.verbosity = verbosity
 
-    def query(self, query, variables):
-        """takes a json query and a variables dict (if any) as parameters, returns json_data, raises if status is bad, or other error"""
-
-        if variables == None:
-            data = json.dumps({'query': query}).encode('utf-8') # encode to bytes
-        else:
-            data = json.dumps({'query': query, 'variables': variables})
-
-        if self.verbosity > 2:
-            print(f'using query: {data}')
+    def __send_command(self, data):
+        """send actual data command, return decoded body"""
         request = urllib.request.Request(self.uri, data, self.headers)
         request.add_header('Content-Type', 'application/json; charset=utf-8')
         request.add_header('Content-Length', len(data))
@@ -51,5 +43,26 @@ class GQL(object):
 
         return page.decode('utf-8') # decode to string
 
-    def mutation(self, command):
-        pass
+    def query(self, query, variables=None):
+        """takes a json query and a variables dict (if any) as parameters, returns json_data, raises if status is bad, or other error"""
+        if variables == None:
+            data = json.dumps({'query': query}).encode('utf-8') # encode to bytes
+        else:
+            data = json.dumps({'query': query, 'variables': variables}).encode('utf-8')
+
+        if self.verbosity > 2:
+            print(f'using query: {data}')
+
+        return self.__send_command(data)        
+
+    def mutation(self, mutation, variables=None):
+        """takes a json mutaions and a variables dict (if any) as parameters, returns json_data, raises if status is bad, or other error"""
+        if variables == None:
+            data = json.dumps({'mutation': mutation}).encode('utf-8') # encode to bytes
+        else:
+            data = json.dumps({'mutation': mutation, 'variables': variables}).encode('utf-8')
+
+        if self.verbosity > 2:
+            print(f'using mutation: {data}')
+
+        return self.__send_command(data)
