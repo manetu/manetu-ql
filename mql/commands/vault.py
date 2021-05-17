@@ -43,7 +43,7 @@ def dispatch(gql, args, remainder):
     if args.subcmd not in cmds:
         raise ValueError(f'unknown command requested: "{args.subcmd}"')
 
-    data = cmds[args.subcmd](gql, args.terms, args.full)
+    data = cmds[args.subcmd](gql, args)
 
     if args.pretty:
         print(json.dumps(json.loads(data), indent=2))
@@ -51,13 +51,13 @@ def dispatch(gql, args, remainder):
         print(data)
 
 
-def vlist(gql, terms, full):
+def vlist(gql, args):
     if verbosity > 0:
         print('executing "list" subcommand')
 
     scopes = ['ALL', 'CLAIMED', 'UNCLAIMED', 'REJECTED']
     scope = None
-    for tt in terms:
+    for tt in args.terms:
         if tt in scopes:
             scope = tt
             break
@@ -65,10 +65,10 @@ def vlist(gql, terms, full):
     spec = 'scope:ALL'
     if scope != None:
         spec = f'scope:{scope}'
-    elif len(terms) > 0:
-        spec = f'labels:{terms}'
+    elif len(args.terms) > 0:
+        spec = f'labels:{args.terms}'
 
-    fields = get_vault_fields(gql, full)
+    fields = get_vault_fields(gql, args.full, args.attributes, args.iri)
 
     query = f'{{ get_provider_vaults({spec}) {{ {" ".join(fields)} }}  }}'
 
@@ -79,13 +79,13 @@ def vlist(gql, terms, full):
 
     return data
 
-def search(gql, terms, full):
+def search(gql, args):
     pass
 
-def create(gql, terms, full):
+def create(gql, args):
     pass
 
-def delete(gql, terms, full):
+def delete(gql, args):
     pass
 
 
@@ -101,7 +101,7 @@ def lookup_object(gql, name):
             break
     return obj
 
-def get_vault_fields(gql, full=False):
+def get_vault_fields(gql, full=False, attr=False, iri=False):
      # minimal field set
     if not full:
         return ['label']
