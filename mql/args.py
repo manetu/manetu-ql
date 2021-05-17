@@ -64,6 +64,10 @@ vault_parser = subparsers.add_parser('vault', help='manage vaults in system')
 
 vault_parser.add_argument('-f', '--full', action='store_true',
                             help='output all vault fields (default: minimal)')
+vault_parser.add_argument('-a', '--attributes', action='store_true',
+                            help='include attributes in output')
+vault_parser.add_argument('-i', '--iri', action='store_true',
+                            help="include iri's in output")
 
 vsubparsers = vault_parser.add_subparsers(help='subcommands', dest='subcmd')
 
