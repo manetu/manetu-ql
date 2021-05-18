@@ -59,7 +59,7 @@ To uninstall, do this: `$ pip3 uninstall manetu_ql`
 
 # Using the project as a library for your own apps
 
-Once you install the package wheel as descirbed above, the mql package which
+Once you install the package wheel as described above, the mql package which
 contains all the source for this application is installed in your site-packages
 directory. To use it as a library, simply import what you need out of it.
 
