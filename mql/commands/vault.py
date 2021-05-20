@@ -66,7 +66,7 @@ def vlist(gql, args):
     if scope != None:
         spec = f'scope:{scope}'
     elif len(args.terms) > 0:
-        spec = f'labels:{args.terms}'
+        spec = f'labels:{json.dumps(args.terms)}'
 
     fields = get_vault_fields(gql, args.full, args.attributes, args.iri)
 
