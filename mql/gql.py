@@ -49,6 +49,8 @@ class GQL(object):
                     print(f"Can't reach server {self.uri} because: {e.reason}")
                 elif hasattr(e, 'code'):
                     print(f"Server error (code: {e.code}): {e.msg}")
+                msg = e.read().decode()
+                print(json.dumps(json.loads(msg), indent=2))
             raise e
 
         return response
