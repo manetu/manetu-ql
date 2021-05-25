@@ -123,5 +123,39 @@ def get_vault_fields(gql, full=False, attr=False, iri=False):
 
         if field['type']['kind'] == 'NON_NULL' and field['type']['ofType']['kind'] == 'SCALAR':
             flist.append(field['name'])
+            continue
+
+        if field['type']['kind'] == 'OBJECT':
+            obj = lookup_object(gql, field['type']['name'])
+            if obj == None:
+                continue
+            flist.extend(get_obj_fields(gql, obj, field['name']))
+            continue
+
+        if field['type']['kind'] == 'LIST':
+            continue
 
     return flist
+
+def get_obj_fields(gql, obj, fname):
+    if fname != None:
+        ret = [fname, '{']
+    else:
+        ret = [obj['name'], '{']
+
+    for field in obj['fields']:
+        if field['type']['kind'] == 'OBJECT':
+            inobj = lookup_object(gql, field['type']['name'])
+            if inobj == None:
+                continue
+            ret.extend(get_obj_fields(gql, inobj, field['name']))
+            continue
+
+        if field['type']['kind'] == 'ENUM' or field['type']['kind'] == 'SCALAR':
+            ret.append(field['name'])
+            continue
+
+    ret.append('}')
+    if verbosity > 1:
+        print(f'got object: {ret}')
+    return ret
