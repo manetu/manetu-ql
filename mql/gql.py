@@ -8,7 +8,7 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
-import json, urllib.parse, urllib.request
+import json, urllib.parse, urllib.request, http.client
 from urllib.error import URLError
 
 class GQL(object):
@@ -31,8 +31,18 @@ class GQL(object):
             print(f'request.data: {request.data}')
 
         try:
-            with urllib.request.urlopen(request) as response:
-                page = response.read()
+            request = urllib.request.urlopen(request)
+            response = ""
+            # account for chunked responses on slow lines and bad servers
+            while True:
+                try:
+                    respPart = request.read()
+                except http.client.IncompleteRead as ic:
+                    response = response + ic.partial.decode('utf-8')
+                    continue
+                else:
+                    response = response + respPart.decode('utf-8')
+                    break
         except URLError as e:
             if self.verbosity > 0:
                 if hasattr(e, 'reason'):
@@ -41,7 +51,7 @@ class GQL(object):
                     print(f"Server error (code: {e.code}): {e.msg}")
             raise e
 
-        return page.decode('utf-8') # decode to string
+        return response
 
     def query(self, query, variables=None):
         """takes a json query and a variables dict (if any) as parameters, returns json_data, raises if status is bad, or other error"""
