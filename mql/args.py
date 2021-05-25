@@ -50,9 +50,9 @@ schema_parser.add_argument('-f', '--full', action='store_true',
 list_parser = subparsers.add_parser('list', help='list all objects so you can describe/use them')
 
 #  ----- getall command which gets all fields in an object ------
-getall_parser = subparsers.add_parser('getall', help='get all fields for an object')
-getall_parser.add_argument('object', action='store',
-                           help='the object of interest')
+# getall_parser = subparsers.add_parser('getall', help='get all fields for an object')
+# getall_parser.add_argument('object', action='store',
+#                            help='the object of interest')
 
 #  ----- describe command which descirbes objects so you can call/specify them -----
 describe_parser = subparsers.add_parser('describe', help='describe an object so you can call/use it')
