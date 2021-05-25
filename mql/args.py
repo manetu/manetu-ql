@@ -62,24 +62,29 @@ describe_parser.add_argument('object', action='store',
 #  ----- vault command which is used to create/destory/update vaults and list them -----
 vault_parser = subparsers.add_parser('vault', help='manage vaults in system')
 
-vault_parser.add_argument('-f', '--full', action='store_true',
-                            help='output all vault fields (default: minimal)')
-vault_parser.add_argument('-a', '--attributes', action='store_true',
-                            help='include attributes in output')
-vault_parser.add_argument('-i', '--iri', action='store_true',
-                            help="include iri's in output")
-
 vsubparsers = vault_parser.add_subparsers(help='subcommands', dest='subcmd')
 
 vlist_parser = vsubparsers.add_parser('list', help='list vaults in system')
 vlist_parser.add_argument('terms', action='store',
                           help='which vault(s) to list (a list of vault labels), or which scopes (ALL, CLAIMED, UNCLAIMED, REJECTED), blank lists ALL',
                           nargs='*', default=['ALL'])
+vlist_parser.add_argument('-f', '--full', action='store_true',
+                            help='output all vault fields (default: minimal)')
+vlist_parser.add_argument('-a', '--attributes', action='store_true',
+                            help='include attributes in output')
+vlist_parser.add_argument('-i', '--iri', action='store_true',
+                            help="include iri's in output")
 
 vsearch_parser = vsubparsers.add_parser('search', help='search for vaults matching term(s)')
 vsearch_parser.add_argument('terms', action='store',
                             help='search terms, possibly containing negated terms (ie "match_this -but_not_this")',
                             nargs='+')
+vsearch_parser.add_argument('-f', '--full', action='store_true',
+                            help='output all vault fields (default: minimal)')
+vsearch_parser.add_argument('-a', '--attributes', action='store_true',
+                            help='include attributes in output')
+vsearch_parser.add_argument('-i', '--iri', action='store_true',
+                            help="include iri's in output")
 
 vcreate_parser = vsubparsers.add_parser('create', help='create vault(s)')
 vcreate_parser.add_argument('terms', action='store',
