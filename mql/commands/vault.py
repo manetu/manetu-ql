@@ -92,7 +92,14 @@ def delete(gql, args):
 def lookup_object(gql, name):
     global schema
     if schema == {}:
-        schema = json.loads(get_schema(gql, 'all', True))['data']['__schema']
+        sch =''
+        try:
+            sch = get_schema(gql, 'all', True)
+            schema = json.loads(sch)['data']['__schema']
+        except:
+            if verbosity > 2:
+                print(f'Received data:\n {sch}')
+            raise
 
     obj = None
     for v in schema['types']:

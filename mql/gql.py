@@ -8,7 +8,7 @@ This is free software; please see the LICENSE file
 for details and any restrictions.
 """
 
-import json, urllib.parse, urllib.request, http.client
+import json, time, urllib.parse, urllib.request, http.client
 from urllib.error import URLError
 
 class GQL(object):
@@ -31,18 +31,25 @@ class GQL(object):
             print(f'request.data: {request.data}')
 
         try:
-            request = urllib.request.urlopen(request)
-            response = ""
-            # account for chunked responses on slow lines and bad servers
-            while True:
+            attempts = 5
+            for i in range(attempts):
+                rsp = urllib.request.urlopen(request)
                 try:
-                    respPart = request.read()
-                except http.client.IncompleteRead as ic:
-                    response = response + ic.partial.decode('utf-8')
-                    continue
-                else:
-                    response = response + respPart.decode('utf-8')
+                    response = rsp.read()
+                    if self.verbosity > 1:
+                        print(f'read response in {i+1} tries')
                     break
+                except http.client.IncompleteRead:
+                    if i >= attempts-1:
+                        if self.verbosity > 0:
+                            print(f'incomplete read #{i+1} -> giving up')
+                        raise
+                    tm = i*3
+                    if self.verbosity > 1:
+                        print(f'incomplete read, wating {tm} seconds to retry...')
+                    rsp.close()
+                    time.sleep(tm)
+
         except URLError as e:
             if self.verbosity > 0:
                 if hasattr(e, 'reason'):
