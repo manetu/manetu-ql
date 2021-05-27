@@ -11,6 +11,7 @@ for details and any restrictions.
 from mql.args import vault_parser
 from mql.commands.schema import get_schema
 import json, sys
+from string import Template
 
 verbosity = 0
 schema = {}
@@ -79,7 +80,7 @@ def vlist(gql, args):
     if verbosity > 1:
         print(f'using query text: {query}')
 
-    data = gql.query(query, None)
+    data = gql.query(query)
 
     return data
 
@@ -87,7 +88,21 @@ def search(gql, args):
     pass
 
 def create(gql, args):
-    pass
+    if verbosity > 0:
+        print('executing "create" subcommand')
+        if len(args.terms) > 1:
+            print(f'extraneous arguments passed: {args.terms[1:]}')
+        print(f'creating vault: {args.terms[0]}')
+
+    template = Template('{ create_vault(label:"$label", role: USER) { label sid created role } }')
+
+    if verbosity > 1:
+        print(f'using mutation text: {template.substitute(label=args.terms[0])}')
+
+    data = gql.mutation(template.substitute(label=args.terms[0]))
+
+    return data
+
 
 def delete(gql, args):
     pass

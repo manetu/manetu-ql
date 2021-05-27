@@ -37,7 +37,7 @@ class GQL(object):
                 try:
                     response = rsp.read()
                     if self.verbosity > 1:
-                        print(f'read response in {i+1} tries')
+                        print(f'read response in {i+1} tr{"ies" if i>1 else "y"}')
                     break
                 except http.client.IncompleteRead:
                     if i >= attempts-1:
@@ -57,7 +57,11 @@ class GQL(object):
                 elif hasattr(e, 'code'):
                     print(f"Server error (code: {e.code}): {e.msg}")
                 msg = e.read().decode()
-                print(json.dumps(json.loads(msg), indent=2))
+                if msg != None:
+                    try:
+                        print(json.dumps(json.loads(msg), indent=2))
+                    except:
+                        print(msg)
             raise e
 
         return response.decode('utf-8')
@@ -77,9 +81,9 @@ class GQL(object):
     def mutation(self, mutation, variables=None):
         """takes a json mutaions and a variables dict (if any) as parameters, returns json_data, raises if status is bad, or other error"""
         if variables == None:
-            data = json.dumps({'mutation': mutation}).encode('utf-8') # encode to bytes
+            data = json.dumps({'query': 'mutation ' + mutation}).encode('utf-8') # encode to bytes
         else:
-            data = json.dumps({'mutation': mutation, 'variables': variables}).encode('utf-8')
+            data = json.dumps({'query': 'mutation ' + mutation, 'variables': variables}).encode('utf-8')
 
         if self.verbosity > 2:
             print(f'using mutation: {data}')
