@@ -76,9 +76,9 @@ vlist_parser.add_argument('-i', '--iri', action='store_true',
                             help="include iri's in output")
 
 vsearch_parser = vsubparsers.add_parser('search', help='search for vaults matching term(s)')
-vsearch_parser.add_argument('terms', action='store',
-                            help='search terms, possibly containing negated terms (ie "match_this -but_not_this")',
-                            nargs='+')
+vsearch_parser.add_argument('terms', action='append',
+                            help='search terms, implied "and", possibly containing negated terms (ie "match_this -but_not_this")',
+                            nargs='?')
 vsearch_parser.add_argument('-f', '--full', action='store_true',
                             help='output all vault fields (default: minimal)')
 vsearch_parser.add_argument('-a', '--attributes', action='store_true',

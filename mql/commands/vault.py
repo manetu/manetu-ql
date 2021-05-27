@@ -29,7 +29,13 @@ def dispatch(gql, args, remainder):
     if verbosity > 1:
         print(f'executing "vault" command, verbosity {verbosity}')
 
-    args.terms.extend(remainder)  # add potentially negated terms (for search)
+    if args.terms == None:
+        args.terms = remainder
+    else:
+        if len(args.terms) == 1 and args.terms[0] == None:
+            args.terms = remainder
+        else:
+            args.terms.extend(remainder)  # add potentially negated terms (for search)
 
     if verbosity > 1:
         print(f"args: {args}")
@@ -85,7 +91,23 @@ def vlist(gql, args):
     return data
 
 def search(gql, args):
-    pass
+    if verbosity > 0:
+        print('executing "search" subcommand')
+        print(f'search term{"s" if len(args.terms)>1 else ""}: {args.terms}')
+
+    if len(args.terms) == 0:
+        raise ValueError('no search terms')
+
+    fields = get_vault_fields(gql, args.full, args.attributes, args.iri)
+
+    query = f'{{ search(term:"{" ".join(args.terms)}") {{ {" ".join(fields)} }} }}'
+
+    if verbosity > 1:
+        print(f'using query text: {query}')
+
+    data = gql.query(query)
+
+    return data
 
 def create(gql, args):
     if verbosity > 0:
