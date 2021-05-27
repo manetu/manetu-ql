@@ -140,6 +140,7 @@ def get_vault_fields(gql, full=False, attr=False, iri=False):
             continue
 
         if field['type']['kind'] == 'LIST':
+            # TODO:
             continue
 
     return flist
@@ -160,6 +161,10 @@ def get_obj_fields(gql, obj, fname):
 
         if field['type']['kind'] == 'ENUM' or field['type']['kind'] == 'SCALAR':
             ret.append(field['name'])
+            continue
+
+        if field['type']['kind'] == 'LIST':
+            #TODO:
             continue
 
     ret.append('}')
