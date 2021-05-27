@@ -103,9 +103,21 @@ def create(gql, args):
 
     return data
 
-
 def delete(gql, args):
-    pass
+    if verbosity > 0:
+        print('executing "delete" subcommand')
+        if len(args.terms) > 1:
+            print(f'extraneous arguments passed: {args.terms[1:]}')
+        print(f'deleting vault: {args.terms[0]}')
+
+    template = Template('{ delete_vault(label:"$label") }')
+
+    if verbosity > 1:
+        print(f'using mutation text: {template.substitute(label=args.terms[0])}')
+
+    data = gql.mutation(template.substitute(label=args.terms[0]))
+
+    return data
 
 
 def lookup_object(gql, name):
