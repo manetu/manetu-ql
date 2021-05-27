@@ -60,7 +60,7 @@ class GQL(object):
                 print(json.dumps(json.loads(msg), indent=2))
             raise e
 
-        return response
+        return response.decode('utf-8')
 
     def query(self, query, variables=None):
         """takes a json query and a variables dict (if any) as parameters, returns json_data, raises if status is bad, or other error"""
