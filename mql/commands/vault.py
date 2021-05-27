@@ -45,10 +45,14 @@ def dispatch(gql, args, remainder):
 
     data = cmds[args.subcmd](gql, args)
 
-    if args.pretty:
-        print(json.dumps(json.loads(data), indent=2))
-    else:
-        print(data)
+    if data != None:
+        if args.pretty:
+            print(json.dumps(json.loads(data), indent=2))
+        else:
+            print(data)
+    elif args.verbose > 0:
+        print("No data")
+        sys.exit(1)
 
 
 def vlist(gql, args):
@@ -111,7 +115,7 @@ def lookup_object(gql, name):
 def get_vault_fields(gql, full=False, attr=False, iri=False):
      # minimal field set
     if not full:
-        return ['label']
+        return ['label', 'name']
 
     # full field set
     vault = lookup_object(gql, 'vault')
