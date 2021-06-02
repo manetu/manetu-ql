@@ -185,15 +185,11 @@ def get_vault_fields(gql, full=False, attr=False, iri=False):
             flist.append(field['name'])
             continue
 
-        if field['type']['kind'] == 'OBJECT':
+        if field['type']['kind'] == 'OBJECT' or field['type']['kind'] == 'LIST':
             obj = lookup_object(gql, field['type']['name'])
             if obj == None:
                 continue
             flist.extend(get_obj_fields(gql, obj, field['name']))
-            continue
-
-        if field['type']['kind'] == 'LIST':
-            # TODO:
             continue
 
     return flist
@@ -216,11 +212,33 @@ def get_obj_fields(gql, obj, fname):
             ret.append(field['name'])
             continue
 
+        if field['type']['kind'] == 'NON_NULL' and field['type']['ofType']['kind'] == 'SCALAR':
+            ret.append(field['name'])
+            continue
+
         if field['type']['kind'] == 'LIST':
-            #TODO:
+            tname, tkind = extractName_ofType(field)
+            if tname == None:
+                continue
+            if tkind == 'SCALAR':
+                ret.append(field['name'])
+            else:
+                inobj = lookup_object(gql, tname)
+                if inobj != None:
+                    ret.extend(get_obj_fields(gql, inobj, field['name']))
             continue
 
     ret.append('}')
     if verbosity > 1:
         print(f'got object: {ret}')
     return ret
+
+def extractName_ofType(obj):
+    name = obj['type']['name']
+    kind = obj['type']['kind']
+    ofType = obj['type']['ofType']
+    while ofType != None:
+        name = ofType['name']
+        kind = ofType['kind']
+        ofType = ofType['ofType']
+    return name, kind
