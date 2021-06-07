@@ -33,11 +33,15 @@ class GQL(object):
         try:
             attempts = 5
             for i in range(attempts):
+                tik = time.perf_counter()
                 rsp = urllib.request.urlopen(request)
                 try:
+                    tok = time.perf_counter()
                     response = rsp.read()
-                    if self.verbosity > 1:
-                        print(f'read response in {i+1} tr{"ies" if i>1 else "y"}')
+                    if self.verbosity > 0:
+                        print(f'api call took (seconds): {tok-tik:0.3f}')
+                        if self.verbosity > 1:
+                            print(f'read response in {i+1} tr{"ies" if i>1 else "y"}')
                     break
                 except http.client.IncompleteRead:
                     if i >= attempts-1:
