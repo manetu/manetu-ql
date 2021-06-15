@@ -72,6 +72,8 @@ vlist_parser.add_argument('-f', '--full', action='store_true',
                             help='output all vault fields (default: minimal)')
 vlist_parser.add_argument('-a', '--attributes', action='store_true',
                             help='include attributes in output')
+vlist_parser.add_argument('-p', '--prefix', action='store_true',
+                            help="include prefixes in output")
 vlist_parser.add_argument('-i', '--iri', action='store_true',
                             help="include iri's in output")
 
@@ -83,6 +85,8 @@ vsearch_parser.add_argument('-f', '--full', action='store_true',
                             help='output all vault fields (default: minimal)')
 vsearch_parser.add_argument('-a', '--attributes', action='store_true',
                             help='include attributes in output')
+vsearch_parser.add_argument('-p', '--prefix', action='store_true',
+                            help="include prefixes in output")
 vsearch_parser.add_argument('-i', '--iri', action='store_true',
                             help="include iri's in output")
 

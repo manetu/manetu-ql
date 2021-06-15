@@ -79,8 +79,9 @@ def vlist(gql, args):
     elif len(args.terms) > 0:
         spec = f'labels:{json.dumps(args.terms)}'
 
-    fields = get_vault_fields(gql, args.full, args.attributes, args.iri)
-
+    fields = get_vault_fields(gql, args.full, args.attributes)
+    if verbosity > 2:
+        print(f'fields are: {fields}')
     query = f'{{ get_provider_vaults({spec}) {{ {" ".join(fields)} }}  }}'
 
     if verbosity > 1:
@@ -98,8 +99,9 @@ def search(gql, args):
     if len(args.terms) == 0:
         raise ValueError('no search terms')
 
-    fields = get_vault_fields(gql, args.full, args.attributes, args.iri)
-
+    fields = get_vault_fields(gql, args.full, args.attributes)
+    if verbosity > 2:
+        print(f'fields are: {fields}')
     query = f'{{ search(term:"{" ".join(args.terms)}") {{ {" ".join(fields)} }} }}'
 
     if verbosity > 1:
@@ -161,17 +163,25 @@ def lookup_object(gql, name):
             break
     return obj
 
-def get_vault_fields(gql, full=False, attr=False, iri=False):
-     # minimal field set
+def get_vault_fields(gql, full=False, attr=False):
+    flist = []
+
+    if attr:
+        # get full set of attrs, will post-process later
+        flist.append('attributes(sparql_expr:"SELECT ?s ?p ?o WHERE { ?s ?p ?o }") { name value }')
+
+    # minimal field set
     if not full:
-        return ['label', 'name']
+        flist.extend(['label', 'name'])
+        if verbosity > 2:
+            print(f'flist: {flist}')
+        return flist
 
     # full field set
     vault = lookup_object(gql, 'vault')
     if vault == None:
         raise ValueError("can't find 'vault' object in schema")
 
-    flist = []
     for field in vault['fields']:
         # skip attributes for now
         if field['name'] == 'attributes':
