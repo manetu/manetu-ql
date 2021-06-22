@@ -90,12 +90,12 @@ vsearch_parser.add_argument('-p', '--prefix', action='store_true',
 vsearch_parser.add_argument('-i', '--iri', action='store_true',
                             help="include iri's in output")
 
-vcreate_parser = vsubparsers.add_parser('create', help='create vault(s)')
+vcreate_parser = vsubparsers.add_parser('create', help='create vault')
 vcreate_parser.add_argument('terms', action='store',
                             help='create a vault with given label, multiple labels will create multiple vaults',
                             nargs='+')
 
-vdelete_parser = vsubparsers.add_parser('delete', help='delete vault(s)')
+vdelete_parser = vsubparsers.add_parser('delete', help='delete vault')
 vdelete_parser.add_argument('terms', action='store',
                             help='delete a vault with given label, multiple labels will delete multiple vaults',
                             nargs='+')
