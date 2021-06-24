@@ -56,13 +56,7 @@ def dispatch(gql, args, remainder):
         print("No data")
         sys.exit(1)
 
-    if args.attributes == False:
-        if args.pretty:
-            print(json.dumps(json.loads(data), indent=2))
-        else:
-            print(data)
-
-    # otherwise, attributes requested, need to postprocess
+    # post process attributes if requested
     jdo = json.loads(data)
     for section in jdo['data']:                   # for subcommands in result
         jres = {'data': {section: ''}}
@@ -74,6 +68,9 @@ def dispatch(gql, args, remainder):
                     v[attrkey] = copy.deepcopy(vault[attrkey])
                     continue
                 
+                if not args.attributes:
+                    continue
+
                 v['attributes'] = []                   # process attributes
                 for attrgroup in vault[attrkey]:
                     attr = {}
