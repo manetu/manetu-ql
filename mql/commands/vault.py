@@ -10,7 +10,7 @@ for details and any restrictions.
 
 from mql.args import vault_parser
 from mql.commands.schema import get_schema
-import json, sys
+import copy, json, sys
 from string import Template
 
 verbosity = 0
@@ -52,14 +52,59 @@ def dispatch(gql, args, remainder):
 
     data = cmds[args.subcmd](gql, args)
 
-    if data != None:
+    if args.verbose > 0 and data == None:
+        print("No data")
+        sys.exit(1)
+
+    if args.attributes == False:
         if args.pretty:
             print(json.dumps(json.loads(data), indent=2))
         else:
             print(data)
-    elif args.verbose > 0:
-        print("No data")
-        sys.exit(1)
+
+    # otherwise, attributes requested, need to postprocess
+    jdo = json.loads(data)
+    for section in jdo['data']:                   # for subcommands in result
+        jres = {'data': {section: ''}}
+        jres['data'][section] = []
+        for vault in jdo['data'][section]:            # for vaults in subcommand
+            v = {}
+            for attrkey in vault:                      # for items in vault
+                if attrkey != 'attributes':
+                    v[attrkey] = copy.deepcopy(vault[attrkey])
+                    continue
+                
+                v['attributes'] = []                   # process attributes
+                for attrgroup in vault[attrkey]:
+                    attr = {}
+                    for attritem in attrgroup:         # for every triple
+                        if attritem['name'] == '?p':        # name
+                            name = attritem['value']
+                        elif attritem['name'] == '?o':      # value
+                            value = attritem['value']
+                        elif attritem['name'] == '?s':      # iri
+                            iri = attritem['value']
+                        else:
+                            raise ValueError(f'''unknown marker in attribute "{attritem["name"]}" : "{attritem["value"]}"''')
+                    if args.prefix:
+                        attr['name'] = name.strip('<>')
+                    else:
+                        sname = name.strip('<>').split(sep='#', maxsplit=1)
+                        if len(sname) == 1:
+                            attr['name'] = sname[0]
+                        else:
+                            attr['name'] = sname[1]
+                    if args.iri:
+                        attr['iri'] = iri.strip('<>')
+                    attr['value'] = value.strip('<>')
+                    v['attributes'].append(attr)
+
+            jres['data'][section].append(v)
+
+    if args.pretty:
+        print(json.dumps(jres, indent=2))
+    else:
+        print(json.dumps(jres))
 
 
 def vlist(gql, args):
